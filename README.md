@@ -1,4 +1,4 @@
-# database-security--VPD-oracle
+# Database Security VPD-oracle
 This repository contains my implementation of four Oracle VPD security policies on the HR schema (Job History filtering, Salary masking, Time-based access, and Department update control). All scripts, screenshots, and documentation are included.
 ## Overview
 
@@ -9,16 +9,16 @@ Oracle’s Virtual Private Database (VPD) is a security feature that applies fin
 
 ## Types of VPD Policies in Oracle
 
-### Row-Level Security (RLS)
+### 1-Row-Level Security (RLS)
 Controls which rows a user is allowed to read or update based on specific conditions.
 
-### Column-Level Security
+### 2-Column-Level Security
 Hides or masks sensitive column data from unauthorized users.
 
-### Time-Based Access
+### 3-Time-Based Access
 Restricts access to certain data depending on the time or business hours.
 
-### Operation-Specific Policies
+### 4-Operation-Specific Policies
 Applies security rules only to certain SQL operations, such as SELECT, UPDATE, or DELETE.
 
 ---
@@ -58,5 +58,34 @@ Outside these hours, all users are prevented from accessing the data.
 A policy on the `DEPARTMENTS` table:
 - Department Managers can update the `LOCATION_ID` for their own department only.
 - HR Managers have permission to update any department.
+
+---
+## Folder Structure
+
+📂 Oracle-VPD-Implementation  
+│── 📜 README.md                       # Project documentation and overview  
+│── 📂 scripts/                        # All SQL scripts used in the project  
+│     │── 📜 create_users.sql          # Creating users and granting basic privileges  
+│     │── 📜 context_creation.sql       # Building session context + security package  
+│     │── 📜 policy1_job_history.sql    # Row-level policy for job history  
+│     │── 📜 policy2_salary.sql         # Column-level salary protection policy  
+│     │── 📜 policy3_time_based.sql     # Time-based access restriction  
+│     │── 📜 policy4_department_update.sql  # Restricted department location updates  
+│     │── 📜 policy_tests.sql           # Queries used to test all VPD policies  
+│  
+│── 📂 screenshots/                    # Evidence of policy behavior (optional)  
+│── 📂 report/                         # Original course submission  
+│     │── 📜 Project.pdf               # Your submitted project  
+│     │── 📜 notes.md                  # Additional notes or explanation (optional)  
+
+---
+
+### **Prerequisites**
+Before running the project, ensure you have:
+
+- Oracle Database 12c / 19c or later  
+- Access to the **PDBORCL** pluggable database  
+- HR Schema installed and unlocked  
+- SQL*Plus, SQL Developer, or any Oracle SQL client  
 
 ---
